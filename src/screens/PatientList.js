@@ -14,6 +14,9 @@ export default function PatientList() {
   const [userData, setUserData] = useState();
   const [filterData, setFilterData] = useState();
 
+  // const [searchText, setSearchText] = useState('');
+  // const [selectedDate, setSelectedDate] = useState('');
+
   useEffect(() => {
     const dataRef = ref(database, "Post");
     const postIdQuery = query(
@@ -38,14 +41,40 @@ export default function PatientList() {
     });
   }, []);
 
+//   const filteredList = Items.filter((item) =>
+//   item.name.toLowerCase().includes(searchText.toLowerCase()) &&
+//   (selectedDate === '' || item.date === selectedDate)
+// );
+
+
+
   return (
 
     <View style={styles.container}>
-      {/* <Text style={styles.text}>Patient List</Text> */}
+
+{/* <TextInput
+  style={{height: height, width: width, alignItems: 'center'}} placeholder="Search by name" onChangeText={(text) => setSearchText(text)}
+  value={searchText} />
+  <DatePicker
+  style={styles.datePicker}
+  date={selectedDate}
+  mode="date"
+  placeholder="Select date"
+  format="YYYY-MM-DD"
+  minDate="2020-01-01"
+  maxDate="2025-12-31"
+  onDateChange={(date) => setSelectedDate(date)}
+/> */}
+
+{/* {filteredList.map((item) => (
+  <ListItem key={item.id} name={item.name} date={item.date} />
+))} */}
+
+      <Text style={styles.text}>Patient List</Text>
       <FlatList
-      keyExtractor={(item)=>item.userID}
+      //  keyExtractor={(item, index) => index.key}
         data={filterData}
-        showsVerticalScrollIndicator={true}
+        showsVerticalScrollIndicator={false}
         renderItem={({ item }) => <Items itemData={item} />}
       />
     </View>
@@ -57,18 +86,20 @@ const useStyle = () => {
   const styles = StyleSheet.create({
     container: {
       width: width,
+      position: 'relative',
+      height: height,
       marginTop: 20,
-      marginBottom: 90,
+      paddingBottom: 313,
       marginLeft: 60,
       marginRight: 40,
-      borderColor: "#000000",
+      borderColor: "#000000"
     },
     text: {
       alignItems: "center",
       fontWeight: "bold",
       fontSize: 20,
       marginLeft: 140,
-      marginBottom: 0,
+      marginBottom: 10,
     },
   });
   return { styles };

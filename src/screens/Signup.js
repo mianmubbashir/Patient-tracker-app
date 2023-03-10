@@ -12,7 +12,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, database } from "../../firebaseconfig";
 import { useState } from "react";
 import { ref, set } from "firebase/database";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Signup({ navigation }) {
   const { height, width } = useWindowDimensions();
@@ -55,7 +55,7 @@ export default function Signup({ navigation }) {
       .then((userCredential) => {
         myBase(userCredential.user.uid);
         console.log("SUCCESSFULLY SIGNUP");
-        navigation.navigate("Tabs");
+        navigation.navigate("Login");
       })
       .catch((error) => {
         console.log(error);
@@ -142,7 +142,7 @@ export default function Signup({ navigation }) {
               fontWeight: "bold",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "#0000FF",
+              backgroundColor: "#0E8388",
               height: 40
             }}
             onPress={signUp}

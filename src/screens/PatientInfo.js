@@ -5,7 +5,6 @@ import { useWindowDimensions } from "react-native";
 import { database, auth } from "../../firebaseconfig";
 import { ref, set, push, serverTimestamp } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
-import AuthContext from "./Context";
 
 
 export default function PatientInfo() {
@@ -14,19 +13,14 @@ export default function PatientInfo() {
   const [name, setName] = useState("");
   const [disease, setDisease] = useState("");
   const [medication, setMedication] = useState("");
-  const [date, setDate] = useState(new Date());
   const [cost, setCost] = useState("");
 
-  // const [usdate, setUsDate] = useState(new Date());
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUserID(user?.uid);
       } else {
-        // User is signed out
-        // ...
-        // setLoader(false);
       }
     });
   }, []);
@@ -117,22 +111,6 @@ export default function PatientInfo() {
           marginVertical: 20,
         }}
       />
-
-      {/* <TextInput
-        placeholder="  Date Of Arrival "
-        value={date}
-        onChangeText={(date) => {
-          setDate(date);
-        }}
-        style={{
-          borderRadius: 100,
-          color: "darkGreen",
-          padding: 6,
-          width: "70%",
-          backgroundColor: "rgb(220,220,220)",
-          marginVertical: 20,
-        }}
-      /> */}
  
       <TextInput
         placeholder="  Cost "
@@ -157,7 +135,7 @@ export default function PatientInfo() {
             fontWeight: "bold",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#0000FF",
+            backgroundColor: "#0E8388",
             height: 40,
             marginTop: 20,
           }}

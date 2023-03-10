@@ -3,13 +3,15 @@ import React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Items ({itemData}) {
+  const date = new Date(itemData.date);
+  const dateString = date.toLocaleDateString("en-US")
   return (
     <View style={styles.container}>
       <Image source={require("../../assets/Pic3.png")}/>
      <View style={styles.subContainer}>
      <Text style={styles.name}>{itemData.name}</Text>
      <Text style={styles.disease}>{itemData.disease}</Text>
-     <Text style={styles.date}>{itemData.date}</Text>
+     <Text style={styles.date}>{dateString}</Text>
      <Text style={styles.cost}>{itemData.cost}</Text>
      </View>
     </View>

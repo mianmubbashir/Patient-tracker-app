@@ -12,7 +12,7 @@ import { useState, useContext } from "react";
 import { auth } from "../../firebaseconfig";
 import {signInWithEmailAndPassword } from "firebase/auth";
 import AuthContext from "./Context";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function Login({ navigation }) {
   const { height, width } = useWindowDimensions();
@@ -112,7 +112,7 @@ export default function Login({ navigation }) {
               fontWeight: "bold",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "#0000FF",
+              backgroundColor: "#0E8388",
               height: 40,
             }}
           >
