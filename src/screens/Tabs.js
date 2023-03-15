@@ -3,12 +3,10 @@ import Home from "./Home";
 import Profile from "./Profile.js";
 import PatientInfo from "./PatientInfo";
 import { Image , StyleSheet} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
-
   return (
     <Tab.Navigator style={{ color: "#48d1cc"}} screenOptions={{headerShown: false}}>
       <Tab.Screen

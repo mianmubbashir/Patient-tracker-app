@@ -1,6 +1,12 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { useEffect } from 'react';
 
 export default function Getstart({navigation}) {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace("Login");
+    }, 3000);
+  }, []);
   return (
     <View style={styles.container}>
       <View style={styles.homeTop}>

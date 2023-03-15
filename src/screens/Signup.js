@@ -119,8 +119,6 @@ export default function Signup({ navigation }) {
             marginVertical: 20,
           }}
         />
-        {/* </KeyboardAvoidingView>
-      </ScrollView> */}
         <View
           style={{
             display: "flex",
