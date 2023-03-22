@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { auth } from "./firebaseconfig"
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -14,15 +14,18 @@ import AuthContext from "./src/screens/Context";
 
 const Stack = createNativeStackNavigator();
 export default function App() {
-  let [user, setUser] = useState("");
+  const [user, setUser] = useState("");
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         console.log("User is signed in");
         setUser(user.uid);
+        setLoader(false);
       } else {
         console.log("User is not signed in");
+        setLoader(false);
       }
     });
   }, []);
@@ -38,6 +41,19 @@ export default function App() {
 
   let value = { user, signin, signout };
 
+  if (loader) {
+    return (
+      <View
+        style={{
+          height: "100%",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+      </View>
+    );
+  }
   return (
     <AuthContext.Provider value={value}>
     <NavigationContainer >
